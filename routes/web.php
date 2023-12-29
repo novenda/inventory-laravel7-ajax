@@ -17,13 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register.index');
-Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])->name('register.store');
-
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'check_login'])->name('login.check_login');
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
 
+Route::get('/barang', function () {
+    return view('page.barang');
+});
 
 Route::get('/barang/datatable', [App\Http\Controllers\BarangController::class, 'datatable'])->name('barang/datatable');
 Route::post('/barang/save', [App\Http\Controllers\BarangController::class, 'save'])->name('barang/save');
@@ -63,3 +63,10 @@ Route::get('/hakakses', function () {
 Route::get('/hakakses/datatable', [App\Http\Controllers\HakaksesController::class, 'datatable'])->name('hakakses/datatable');
 Route::post('/hakakses/save', [App\Http\Controllers\HakaksesController::class, 'save'])->name('hakakses/save');
 Route::post('/hakakses/hapus', [App\Http\Controllers\HakaksesController::class, 'hapus'])->name('hakakses/hapus');
+
+Route::get('/katagori', function () {
+    return view('page.katagori');
+});
+Route::get('/katagori/datatable', [App\Http\Controllers\KatagoriController::class, 'datatable'])->name('katagori/datatable');
+Route::post('/katagori/save', [App\Http\Controllers\KatagoriController::class, 'save'])->name('katagori/save');
+Route::post('/katagori/hapus', [App\Http\Controllers\KatagoriController::class, 'hapus'])->name('katagori/hapus');

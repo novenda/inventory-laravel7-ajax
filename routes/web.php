@@ -14,13 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
     return view('welcome');
+
 });
 
-Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
-Route::post('/login', [App\Http\Controllers\LoginController::class, 'check_login'])->name('login.check_login');
-Route::get('/logout', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
 
+
+Route::get('login', [App\Http\Controllers\Auth\AuthController::class, 'index'])->name('login');
+
+Route::post('post-login', [App\Http\Controllers\Auth\AuthController::class, 'postLogin'])->name('login.post');
+
+Route::get('registration', [App\Http\Controllers\Auth\AuthController::class, 'registration'])->name('register');
+
+Route::post('post-registration', [App\Http\Controllers\Auth\AuthController::class, 'postRegistration'])->name('register.post');
+
+Route::get('dashboard', [App\Http\Controllers\Auth\AuthController::class, 'dashboard']);
+
+Route::get('logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
 Route::get('/barang', function () {
     return view('page.barang');
 });

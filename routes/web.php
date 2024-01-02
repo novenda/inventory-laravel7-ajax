@@ -22,20 +22,15 @@ Route::get('/', function () {
 
 
 Route::get('login', [App\Http\Controllers\Auth\AuthController::class, 'index'])->name('login');
-
 Route::post('post-login', [App\Http\Controllers\Auth\AuthController::class, 'postLogin'])->name('login.post');
-
 Route::get('registration', [App\Http\Controllers\Auth\AuthController::class, 'registration'])->name('register');
-
 Route::post('post-registration', [App\Http\Controllers\Auth\AuthController::class, 'postRegistration'])->name('register.post');
-
 Route::get('dashboard', [App\Http\Controllers\Auth\AuthController::class, 'dashboard']);
-
 Route::get('logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
+
 Route::get('/barang', function () {
     return view('page.barang');
 });
-
 Route::get('/barang/datatable', [App\Http\Controllers\BarangController::class, 'datatable'])->name('barang/datatable');
 Route::post('/barang/save', [App\Http\Controllers\BarangController::class, 'save'])->name('barang/save');
 Route::post('/barang/hapus', [App\Http\Controllers\BarangController::class, 'hapus'])->name('barang/hapus');

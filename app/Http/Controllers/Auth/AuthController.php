@@ -192,19 +192,12 @@ class AuthController extends Controller
      */
 
     public function dashboard()
-
     {
-
         if(Auth::check()){
-
             return view('dashboard');
-
         }
 
-
-
         return redirect("login")->withSuccess('Opps! You do not have access');
-
     }
 
 
@@ -222,41 +215,21 @@ class AuthController extends Controller
     public function create(array $data)
 
     {
-
       return User::create([
-
         'name' => $data['name'],
-
         'email' => $data['email'],
-
         'password' => Hash::make($data['password'])
-
       ]);
-
     }
-
-
 
     /**
-
      * Write code on Method
-
      *
-
      * @return response()
-
      */
-
     public function logout() {
-
         Session::flush();
-
         Auth::logout();
-
-
-
         return Redirect('login');
-
     }
-
 }
